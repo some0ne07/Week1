@@ -31,15 +31,13 @@ namespace WebApplication2.Controllers
 
         static string addocs(ref string args)
         {
-            string i = args;
-            string date = DateTime.Now.ToString();
             MongoClient dbClient = new MongoClient("mongodb+srv://none:userpassword@cluster0.g4bnbxw.mongodb.net/?retryWrites=true&w=majority");
 
             var database = dbClient.GetDatabase("user_details");
             var collection = database.GetCollection<BsonDocument>("User");
 
             var document = new BsonDocument { { "_id", DateTime.Now.ToString() }
-                , { "ipaddress",i } };
+                , { "ipaddress",args } };
 
             collection.InsertOne(document);
 
