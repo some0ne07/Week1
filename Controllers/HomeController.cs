@@ -21,11 +21,9 @@ namespace WebApplication2.Controllers
             _logger = logger;
         }
 
-        public string ip;
-
         public string SetIp()
         {
-        ip = Response.HttpContext.Connection.RemoteIpAddress.ToString();
+        string ip = Response.HttpContext.Connection.RemoteIpAddress.ToString();
         return ip;
         }
 
