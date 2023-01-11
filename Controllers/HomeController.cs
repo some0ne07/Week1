@@ -27,7 +27,7 @@ namespace WebApplication2.Controllers
         return ip;
         }
 
-        static string addocs(ref string args)
+        static void addocs(ref string args)
         {
             MongoClient dbClient = new MongoClient("mongodb+srv://none:userpassword@cluster0.g4bnbxw.mongodb.net/?retryWrites=true&w=majority");
 
@@ -38,8 +38,6 @@ namespace WebApplication2.Controllers
                 , { "ipaddress",args } };
 
             collection.InsertOne(document);
-
-            return "address of the user";
 
         }
 
@@ -63,7 +61,7 @@ namespace WebApplication2.Controllers
         public IActionResult Index()
         {
             string ip = SetIp();
-            ViewData["as"] = addocs(ref ip);
+            addocs(ref ip);
             return View();
         }
 
